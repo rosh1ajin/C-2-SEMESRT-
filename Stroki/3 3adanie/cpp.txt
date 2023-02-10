@@ -1,0 +1,80 @@
+#include <iostream>
+#include <string>
+
+void Main(string[] args)
+        {
+            string text = "TексT";
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (char.IsDigit(text[i]))
+                {
+                    string value = default;
+                    while (char.IsDigit(text[i]))
+                    {
+                        value += text[i];
+                        i++;
+                    }
+                    int x = int.Parse(value);
+                    string replacer = default;
+                    switch (x / 100)
+                    {
+                        case 1: { replacer += "сто "; break; }
+                        case 2: { replacer += "двести "; break; }
+                        case 3: { replacer += "триста "; break; }
+                        case 4: { replacer += "четыреста "; break; }
+                        case 5: { replacer += "пятьсот "; break; }
+                        case 6: { replacer += "шестьсот "; break; }
+                        case 7: { replacer += "семьсот "; break; }
+                        case 8: { replacer += "восемьсот "; break; }
+                        case 9: { replacer += "девятьсот "; break; }
+                    }
+                    switch ((x / 10) % 10)
+                    {
+                        case 2: replacer += "двадцать "; break;
+                        case 3: replacer += "тридцать "; break;
+                        case 4: replacer += "сорок "; break;
+                        case 5: replacer += "пятьдесят "; break;
+                        case 6: replacer += "шестьдесят "; break;
+                        case 7: replacer += "семьдесят "; break;
+                        case 8: replacer += "восемьдесят "; break;
+                        case 9: replacer += "девяносто "; break;
+                        case 1:
+                            {
+                                switch (x % 100)
+                                {
+                                    case 10: replacer += "десять "; break;
+                                    case 11: replacer += "одиннадцать "; break;
+                                    case 12: replacer += "двенадцать "; break;
+                                    case 13: replacer += "тринадцать "; break;
+                                    case 14: replacer += "четырнадцать "; break;
+                                    case 15: replacer += "пятнадцать "; break;
+                                    case 16: replacer += "шестнадцать "; break;
+                                    case 17: replacer += "семнадцать "; break;
+                                    case 18: replacer += "восемнадцать "; break;
+                                    case 19: replacer += "девятнадцать "; break;
+                                }
+                                break;
+                            }
+                    }
+                    if ((x % 100 / 10) != 1)
+                    {
+                        switch (x % 10)
+                        {
+                            case 0: break;
+                            case 1: replacer += "один "; break;
+                            case 2: replacer += "два "; break;
+                            case 3: replacer += "три "; break;
+                            case 4: replacer += "четыре "; break;
+                            case 5: replacer += "пять "; break;
+                            case 6: replacer += "шесть "; break;
+                            case 7: replacer += "семь "; break;
+                            case 8: replacer += "восемь "; break;
+                            case 9: replacer += "девять "; break;
+                        }
+                    }
+                    text = text.Replace(value, replacer);
+                }
+            }
+            Console.WriteLine(text);
+            Console.ReadLine();
+        }
